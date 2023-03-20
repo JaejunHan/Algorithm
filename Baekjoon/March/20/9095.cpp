@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int dp[11];
+int dp[12];
 
 int main() {
     dp[1] = 1;
