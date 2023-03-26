@@ -25,14 +25,14 @@ bool possible(int idx)
     return true;
 }
 
-void solve(int idx)
+bool solve(int idx)
 {
     // 모든 조건을 만족하는 경우
     if (idx == num)
     {
         for (int i = 0; i < v.size(); i++)
             cout << v[i] << " ";
-        return;
+        return true;
     }
 
     // -10 부터 10 까지
@@ -41,11 +41,16 @@ void solve(int idx)
         v.push_back(i);
 
         // idx 번째의 숫자가 모든 조건을 만족한다면 idx+1번째로 진행
-        if (possible(idx))
-            solve(idx + 1);
+        if (possible(idx)) {
+            if (solve(idx + 1)) {
+                return true;
+            }
+        }
 
         v.pop_back();
     }
+
+    return false;
 }
 
 int main(void)
