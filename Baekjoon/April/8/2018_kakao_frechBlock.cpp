@@ -47,6 +47,13 @@ void replace(vector<vector<char>>& v, vector<vector<bool>>& res) {
 int solution(int m, int n, vector<string> board) {
     int answer = 0;
 
+    // @ @ 3
+    // 1 2 6
+
+
+    // 1 @
+    // 5 2
+    // 6 3
     vector<vector<char>> v;
     for (int j=0; j < n;j++) {
         vector<char> temp;
