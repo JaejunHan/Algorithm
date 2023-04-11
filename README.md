@@ -1,2 +1,2 @@
-# CodingTest
-preparing for coding tests
+# Algorithm
+daily algorithm
