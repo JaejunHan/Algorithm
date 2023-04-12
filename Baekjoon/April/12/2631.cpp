@@ -5,8 +5,8 @@
 using namespace std;
  
 int N, Max;
-int Arr[MAX];
-int DP[MAX];
+int arr[MAX];
+int dp[MAX];
  
  
 int main(void)
@@ -18,21 +18,21 @@ int main(void)
     cin >> N;
     for (int i = 1; i <= N; i++)
     {
-        cin >> Arr[i];
+        cin >> arr[i];
     }
  
     for (int i = 1; i <= N; i++)
     {
-        DP[i] = 1;
+        dp[i] = 1;
         for (int j = 1; j <= i; j++)
         {
-            if (Arr[j] < Arr[i] && DP[i] < DP[j] + 1)
+            if (arr[j] < arr[i] && dp[i] < dp[j] + 1)
             {
-                DP[i] = DP[j] + 1;
+                dp[i] = dp[j] + 1;
             }
         }
-        if (Max < DP[i])
-            Max = DP[i];
+        if (Max < dp[i])
+            Max = dp[i];
     }
  
     cout << N - Max << endl;
