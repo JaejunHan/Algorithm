@@ -27,7 +27,7 @@ visited_domino 단순 2차원 boolean 배열
 dfs에는 idx를 매개변수로 넘겨줌 - > 0~ 81
 
  */
-class Main{
+class B4574{
 
     static boolean[][] isMarkedDom;
     static int[][] map;
