@@ -1,0 +1,3 @@
+# 2022 KAKAO TECH INTERNSHIP
+
+## 1. 성격 유형 검사하기
