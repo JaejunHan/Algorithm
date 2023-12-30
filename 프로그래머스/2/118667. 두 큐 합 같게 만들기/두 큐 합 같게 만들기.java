@@ -1,52 +1,53 @@
 import java.util.*;
+
 class Solution {
-    static ArrayDeque<Integer> q1 = new ArrayDeque<>();
-    static ArrayDeque<Integer> q2 = new ArrayDeque<>();
+    static Queue<Integer> q1 = new ArrayDeque<>();
+    static Queue<Integer> q2 = new ArrayDeque<>();
+    static long sum1 = 0;
+    static long sum2 = 0;
+    static int t = 0;
+    static int m = 0;
     static int ans = 0;
     public int solution(int[] queue1, int[] queue2) {
-    long s1 = 0;
-        for (int ele: queue1) {
-            q1.add(ele);
-            s1 += ele;
-        }
-
-        long s2 = 0;
-        for (int ele: queue2) {
-            q2.add(ele);
-            s2 += ele;
-        }
-
-        long sum = s1 + s2;
-        if (sum % 2 != 0) {
-            return -1;
-        }
-
-        int i = 0;
-        int j = 0;
-        int t = queue1.length;
-
+        init(queue1, queue2);
+        m = queue1.length + queue2.length;
+        
+        int i = 0, j = 0;
         while (true) {
-            if (s1 == s2) {
-                return ans;
-            }
-            ans++;
-            int n = 0;
-            if (s1 < s2) {
-                n = q2.pollFirst();
-                q1.add(n);
-                s2 -= n;
-                s1 += n;
-                j++;
-            } else {
-                n = q1.pollFirst();
-                q2.add(n);
-                s1 -= n;
-                s2 += n;
-                i++;
-            }
-            if (i >= 2 * t || j >= 2 * t) {
+            if (i > m || j > m) {
                 return -1;
             }
+            
+            if (sum1 > sum2) {
+                int tmp = q1.poll();
+                q2.add(tmp);
+                sum2 += tmp;
+                sum1 -= tmp;
+                i++;
+            } else if (sum1 < sum2) {
+                int tmp = q2.poll();
+                q1.add(tmp);
+                sum1 += tmp;
+                sum2 -= tmp;
+                j++;
+            } else {
+                break;
+            }
+            ans++;
+        }
+        
+        return ans;
+    }
+    
+    private static void init(int[] queue1, int[] queue2) {
+        for (int ele: queue1) {
+            q1.add(ele);
+            sum1 += ele;
+        }
+        
+        for (int ele: queue2) {
+            q2.add(ele);
+            sum2 += ele;
         }
     }
 }
