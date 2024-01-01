@@ -44,3 +44,30 @@ dp[nxt1][nxt2] = Math.min(dp[nxt1][nxt2], dp[i][j] + t);
 3. 특이 테스트 케이스 고려:
    - 주어진 alp, cop 값이 max_alp, max_cop보다 큰 경우 고려
      - 이 경우 alp, cop 값을 max_alop, max_cop으로 초기화.
+
+
+## 4. 등산코스 정하기
+
+**기존 풀이**
+- DFS로 구현
+- gates로부터 summit까지의 경로를 DFS로 찾음
+- DFS의 시간 복잡도: O(N+E)
+  
+**풀이**
+1. Dijkstra를 사용하여 시간 복잡도가 O(NlogN)이 되도록 함.
+   - Node의 길이가 최솟값이 되면 업데이트 함.
+   - PriorityQueue를 사용함.
+      - PQ의 기준은 node의 거리를 ascending order로 함.
+2. 시작점으로부터 summit까지의 거리를 구함.
+
+
+**중요 포인트**
+- ArrayList[] 를 사용하여 인접한 노드 사이의 정보를 저장.
+  - C++의 vector<vector>와 같음.
+  - ArrayList[]를 초기화 하는 방법:
+    ```java
+    ArrayList[] adj = new ArrayList[n+1];
+    for (int i=0; i< n+1; i++) {
+        adj[i] = new ArrayList<Node>();
+    }
+    ```
