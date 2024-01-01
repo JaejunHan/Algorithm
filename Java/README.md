@@ -155,3 +155,10 @@ q.clear();
    Collections.sort(list);
    Collections.sort(list, Collections.reverseOrder());
    ```
+
+
+
+# 알고리즘 시간 복잡도
+## 1. `DFS : O(N+E)`
+## 2. `BFSL O(N+E)`
+## 3. `Dijkstra: O(NlogN)`

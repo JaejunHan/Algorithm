@@ -71,3 +71,27 @@ dp[nxt1][nxt2] = Math.min(dp[nxt1][nxt2], dp[i][j] + t);
         adj[i] = new ArrayList<Node>();
     }
     ```
+
+
+## 5. 행렬과 연산
+
+**시간 복잡도 고려사항**
+1. 주어진 2차원 배열을 그대로 하면 O(N^2)가 나옴.
+   - N의 최댓값이 50,000이므로 제곱하면 25억임.
+   - 시간 초과가 나오므로 O(N)으로 해결해야함.
+   - Deque 사용하기
+  
+
+**문제 풀이**
+- Deque 2개를 사용함
+  - 1개는 첫 번째와 마지막 column을 위한 Column deque
+  - 나머지는 두 column을 제외한 Row Deque
+- `ShiftRow`
+  - Row Deque에서 마지막 원소를 첫번째에 넣음.
+  - Column Deque도 마찬가지
+- `ShiftRow`
+  - 4개의 과정으로 나뉨
+    1. 첫 번째 column Q의 첫 원소를 첫 row Q에 addFirst
+    2. 첫 번째 row Q의 마지막 원소를  마지막 column Q에 addFirst
+    3. 마지막 column의 마지막 원소를 마지막 row Q에 addLast
+    4. 마지막 row의 첫 번째 원소를 첫 번째 column에 addLast
