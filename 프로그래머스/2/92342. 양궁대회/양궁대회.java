@@ -9,7 +9,7 @@ class Solution {
         n = n1;
         info = info1;
         
-        backTrack(0);
+        backTrack(0, 0);
         if (maxDiff == 0) {
             ans = new int[1];
             ans[0] = -1;
@@ -18,22 +18,31 @@ class Solution {
         return ans;
     }
     
-    private static void backTrack(int depth) {
+    private static void backTrack(int depth, int start) {
         if (depth == n) {
             int score = getScore();
-            if (score >= maxDiff) {
+            if (score <= 0) {
+                return;
+            }
+            if (score > maxDiff) {
                 maxDiff = score;
                 ans = ret.clone();
+            } else if (score == maxDiff) {
+                for (int i=10; i >= 0; i--) {
+                    if (ans[i] < ret[i]) {
+                        ans = ret.clone();
+                        break;
+                    } else if (ans[i] > ret[i]) {
+                        break;
+                    }
+                }
             }
             return;
         }
         
-        for (int i=0; i< info.length; i++) {
-            if (ret[i] > info[i]) {
-                return;
-            }
+        for (int i=start; i< info.length; i++) {
             ret[i]++;
-            backTrack(depth+1);
+            backTrack(depth+1, i);
             ret[i]--;
         }
     }
