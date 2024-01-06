@@ -28,11 +28,12 @@ public class Solution {
             if (current.number == end) {
                 return current.cost;
             }
-
-            if (visited[current.number][current.state]) {
+            
+                    
+            if (visited[current.number][state]) {
                 continue;
             }
-            visited[current.number][current.state] = true;
+            visited[current.number][state] = true;
 
             boolean currentTrapped = false;
             
@@ -53,7 +54,6 @@ public class Solution {
 				// 비트에 해당하는 trap이 활성 상태가 아닌 경우
                 if (current.number == traps[i]) { // 그 트랩이 현재 노드인 경우
                     state |= bit; // state에서 이 trap을 활성화
-                    // trapped.add(traps[i]);
                     currentTrapped = true;
                 }
             }
@@ -67,6 +67,7 @@ public class Solution {
 
                 if (currentTrapped == nextTrapped) { // 현재 노드, 다음 노드 둘다 트랩이거나, 둘 다 아니거나는 결과가 동일
                     if (graph[current.number][i] != INF) {
+                        
                         queue.add(new Node(i, current.cost + graph[current.number][i], state));
                     }
                     continue;
