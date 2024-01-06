@@ -32,7 +32,7 @@
 총 3가지 조건이 있음
 ```java
 dp[i+1][j] = Math.min(dp[i+1][j], dp[i][j] + 1);
-dp[i][j+1] = Math.min(dp[i][j+1], dp[i][j] + 1);
+dp[i][j+1] = Math.min(dp[i][j+1], dp[i][j] + 1Set<T> copy = new HashSet<>(original););
 dp[nxt1][nxt2] = Math.min(dp[nxt1][nxt2], dp[i][j] + t);
 ```
 
