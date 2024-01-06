@@ -17,7 +17,7 @@ class Solution {
             sum += ele;
         }
         
-        int low = 0; int high = (int) 1e9;
+        int low = 0; int high = sum;
         for(int n : num) low = Math.max(low, n);
         while (low <= high) {
             mid = (low + high) / 2;
