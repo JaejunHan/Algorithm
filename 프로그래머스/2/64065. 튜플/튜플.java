@@ -4,7 +4,7 @@ class Solution {
     static Set<Integer> set = new LinkedHashSet<>();
     public int[] solution(String s) {
         String tmp = s.substring(2, s.length()-2);
-        String[] eleList = tmp.split("\\},\\{");
+        String[] eleList = tmp.split("\\}\\,\\{");
         
         arr = new ArrayList[eleList.length+1];
         for (int i=0; i <= eleList.length; i++) {
